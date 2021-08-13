@@ -1,0 +1,25 @@
+.expense-item__date {
+  max-width: 100%;
+  color: #6a6b6d;
+  text-align: center;
+  font-size: 12px;
+  width: 60px;
+  border-radius: 5%;
+  box-shadow: 0 0 0 10px #ebeef3, 0 0 0 22px #f3f4f6;
+}
+.expense-item__date .month {
+  font-size: 13px;
+  font-weight: 700;
+  color: #979cb0;
+}
+.expense-item__date .day {
+  font-size: 26px;
+  font-family: "Courier New", Courier, monospace;
+  font-weight: 700;
+  color: #35d8ac;
+}
+.expense-item__date .year {
+  font-size: 11px;
+  font-weight: 700;
+  color: #979cb0;
+}

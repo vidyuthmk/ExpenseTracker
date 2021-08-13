@@ -1,0 +1,6 @@
+.form__controller {
+  background-color: rgb(250, 248, 248);
+  padding: 15px 15px 15px;
+  display: grid;
+  row-gap: 8px;
+}
