@@ -4,6 +4,7 @@ import Card from "./components/UI/Card";
 import AddButton from "./components/UI/AddButton";
 import AddNewExpense from "./components/AddExpense/AddNewExpense";
 import { useState } from "react";
+import ExpenseFilter from "./components/ExpenseFilter/ExpenseFilter";
 
 const App = () => {
   const expense = [
@@ -38,10 +39,16 @@ const App = () => {
     };
     console.log(storeExpenseObj);
   };
+  const divChangeHandler = (divAdded) => {
+    console.log("div added ");
+  };
   return (
     <div className="App">
       <header className="App-header">
-        <Card className="expense=item">
+        <Card>
+          <ExpenseFilter OnChangeDiv={divChangeHandler} />
+        </Card>
+        <Card>
           {expense.map(function (expenseItem, i) {
             return (
               <ExpenseItem
