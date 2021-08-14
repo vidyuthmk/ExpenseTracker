@@ -35,24 +35,30 @@ const ExpenseFilter = (props) => {
 
   return (
     <div className="wrapper1">
-      <div class="select" tabindex="1">
-        <input class="selectopt" name="test" type="radio" id="opt1" checked />
+      <div className="select" tabIndex="1">
+        <input
+          className="selectopt"
+          name="test"
+          type="radio"
+          id="opt1"
+          checked
+        />
         <label for="opt1" class="option">
           2019
         </label>
-        <input class="selectopt" name="test" type="radio" id="opt2" />
+        <input className="selectopt" name="test" type="radio" id="opt2" />
         <label for="opt2" class="option">
           2020
         </label>
-        <input class="selectopt" name="test" type="radio" id="opt3" />
+        <input className="selectopt" name="test" type="radio" id="opt3" />
         <label for="opt3" class="option">
           2021
         </label>
-        <input class="selectopt" name="test" type="radio" id="opt4" />
+        <input className="selectopt" name="test" type="radio" id="opt4" />
         <label for="opt4" class="option">
           2022
         </label>
-        <input class="selectopt" name="test" type="radio" id="opt5" />
+        <input className="selectopt" name="test" type="radio" id="opt5" />
         <label for="opt5" class="option">
           2023
         </label>
