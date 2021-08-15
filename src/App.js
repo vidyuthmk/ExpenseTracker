@@ -39,7 +39,6 @@ const App = () => {
     setexpense((prevExpenses) => {
       return [expenseData, ...prevExpenses];
     });
-    console.log(expenseData);
   };
   const divChangeHandler = (yearSelected) => {
     console.log(yearSelected);
@@ -53,18 +52,9 @@ const App = () => {
             selectedYear={yearState}
             OnChangeDiv={divChangeHandler}
           />
-          {/* {expense.map((expenseItem, i) => {
-            expenseItem = i;
-            return (
-              <ExpenseItem
-                date={expense[i].date}
-                title={expense[i].title}
-                amount={expense[i].amount}
-              ></ExpenseItem>
-            );
-          })} */}
           {expense.map((expenseItem) => (
             <ExpenseItem
+              key={expenseItem.id}
               date={expenseItem.date}
               title={expenseItem.title}
               amount={expenseItem.amount}

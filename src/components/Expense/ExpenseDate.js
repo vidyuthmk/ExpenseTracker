@@ -1,6 +1,5 @@
 import "./ExpenseDate.css";
 const ExpenseDate = (props) => {
-  console.log(props);
   const weekday = props.date.toLocaleString("en-US", { weekday: "short" });
   const day = props.date.toLocaleString("en-US", { day: "numeric" });
   const month_year = props.date.toLocaleString("en-US", {
