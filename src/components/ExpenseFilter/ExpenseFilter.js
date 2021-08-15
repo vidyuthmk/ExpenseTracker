@@ -1,6 +1,7 @@
 import React from "react";
 import { useRef, useEffect, useState } from "react";
 import "./ExpenseFilter.css";
+import YearPicker from "./YearPicker";
 
 const ExpenseFilter = (props) => {
   const values = [100, 100, 340, 320, 500, 50, 45, 385, 95, 120, 90, 20];
@@ -42,34 +43,7 @@ const ExpenseFilter = (props) => {
 
   return (
     <div className="wrapper1">
-      <div className="select" tabIndex="1">
-        <input
-          className="selectopt"
-          name="test"
-          type="radio"
-          id="opt1"
-          defaultChecked
-        />
-        <label htmlFor="opt1" className="option">
-          2019
-        </label>
-        <input className="selectopt" name="test" type="radio" id="opt2" />
-        <label htmlFor="opt2" className="option">
-          2020
-        </label>
-        <input className="selectopt" name="test" type="radio" id="opt3" />
-        <label htmlFor="opt3" className="option">
-          2021
-        </label>
-        <input className="selectopt" name="test" type="radio" id="opt4" />
-        <label htmlFor="opt4" className="option">
-          2022
-        </label>
-        <input className="selectopt" name="test" type="radio" id="opt5" />
-        <label htmlFor="opt5" className="option">
-          2023
-        </label>
-      </div>
+      <YearPicker />
       <div
         id="chart"
         ref={(el) => {

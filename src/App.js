@@ -45,11 +45,13 @@ const App = () => {
   return (
     <div className="App">
       <header className="App-header">
+        {/* <Card>
+          <ExpenseFilter OnChangeDiv={divChangeHandler} />
+        </Card> */}
         <Card>
           <ExpenseFilter OnChangeDiv={divChangeHandler} />
-        </Card>
-        <Card>
           {expense.map(function (expenseItem, i) {
+            expenseItem = i;
             return (
               <ExpenseItem
                 date={expense[i].date}
