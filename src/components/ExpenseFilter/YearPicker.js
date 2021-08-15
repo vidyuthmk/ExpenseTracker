@@ -1,18 +1,22 @@
 import React from "react";
 import "./YearPicker.css";
 
-const YearPicker = () => {
+const YearPicker = (props) => {
   const onChangeHandler1 = (event) => {
-    console.log(event.target.value);
+    props.onChangeYear(event.target.value);
   };
   return (
-    <div className="select" tabIndex="1" onChange={onChangeHandler1}>
+    <div
+      className="select"
+      tabIndex="1"
+      value={props.selectedYear}
+      onChange={onChangeHandler1}
+    >
       <input
         className="selectopt"
         name="test"
         type="radio"
         id="opt1"
-        defaultChecked
         value="2019"
       />
       <label htmlFor="opt1" className="option">
@@ -33,6 +37,7 @@ const YearPicker = () => {
         name="test"
         type="radio"
         id="opt3"
+        defaultChecked
         value="2021"
       />
       <label htmlFor="opt3" className="option">

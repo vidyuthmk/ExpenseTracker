@@ -7,36 +7,36 @@ function ExpenseForm(props) {
 
   const titleChangeHandler = (event) => {
     setuserInput((prevState) => {
-      return { ...prevState, enteredTitle: event.target.value };
+      return { ...prevState, title: event.target.value };
     });
   };
   const amountChangeHandler = (event) => {
     setuserInput((prevState) => {
-      return { ...prevState, enteredAmount: event.target.value };
+      return { ...prevState, amount: event.target.value };
     });
   };
   const dateChangeHandler = (event) => {
     setuserInput((prevState) => {
       return {
         ...prevState,
-        enteredDate: event.target.value,
+        date: event.target.value,
       };
     });
   };
   const submitHandler = (event) => {
     event.preventDefault();
     const expenseDate = {
-      enteredTitle: userInput.enteredTitle,
-      enteredDate: new Date(userInput.enteredDate),
-      enteredAmount: userInput.enteredAmount,
+      title: userInput.title,
+      date: new Date(userInput.date),
+      amount: userInput.amount,
     };
 
     props.onSaveExpenseData(expenseDate);
 
     setuserInput({
-      enteredTitle: "",
-      enteredDate: "",
-      enteredAmount: "",
+      title: "",
+      date: "",
+      amount: "",
     });
   };
   return (
@@ -46,21 +46,21 @@ function ExpenseForm(props) {
           <label>Title</label>
           <input
             type="text"
-            value={userInput.enteredTitle}
+            value={userInput.title}
             placeholder="Add Item Name"
             onChange={titleChangeHandler}
           />
           <label>Amount</label>
           <input
             type="number"
-            value={userInput.enteredAmount}
+            value={userInput.amount}
             placeholder="Enter Price"
             onChange={amountChangeHandler}
           />
           <label>Date</label>
           <input
             type="date"
-            value={userInput.enteredDate}
+            value={userInput.date}
             min="2021-01-01"
             max="2025-12-31"
             onChange={dateChangeHandler}

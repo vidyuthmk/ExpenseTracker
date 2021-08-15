@@ -5,52 +5,55 @@ import AddButton from "./components/UI/AddButton";
 import AddNewExpense from "./components/AddExpense/AddNewExpense";
 import { useState } from "react";
 import ExpenseFilter from "./components/ExpenseFilter/ExpenseFilter";
-
+const dummyExpense = [
+  {
+    id: 1,
+    title: "Beer",
+    date: new Date(2021, 2, 13),
+    amount: 4.5,
+  },
+  {
+    id: 2,
+    title: "Books",
+    date: new Date(2021, 3, 10),
+    amount: 10.5,
+  },
+  {
+    id: 3,
+    title: "Tv",
+    date: new Date(2021, 7, 2),
+    amount: 120.0,
+  },
+  {
+    id: 4,
+    title: "Biryani",
+    date: new Date(2021, 2, 16),
+    amount: 12.3,
+  },
+];
 const App = () => {
-  const expense = [
-    {
-      id: 1,
-      title: "Beer",
-      date: new Date(2021, 2, 13),
-      amount: 4.5,
-    },
-    {
-      id: 2,
-      title: "Books",
-      date: new Date(2021, 3, 10),
-      amount: 10.5,
-    },
-    {
-      id: 3,
-      title: "Tv",
-      date: new Date(2021, 7, 2),
-      amount: 120.0,
-    },
-    {
-      id: 4,
-      title: "Biryani",
-      date: new Date(2021, 2, 16),
-      amount: 12.3,
-    },
-  ];
-  const expenseRequestHandler = (expenseDate) => {
-    const storeExpenseObj = {
-      ...expenseDate,
-    };
-    console.log(storeExpenseObj);
+  const [yearState, setyearState] = useState("2020");
+  const [expense, setexpense] = useState(dummyExpense);
+
+  const expenseRequestHandler = (expenseData) => {
+    setexpense((prevExpenses) => {
+      return [expenseData, ...prevExpenses];
+    });
+    console.log(expenseData);
   };
-  const divChangeHandler = (divAdded) => {
-    console.log("div added ");
+  const divChangeHandler = (yearSelected) => {
+    console.log(yearSelected);
+    setyearState(yearSelected);
   };
   return (
     <div className="App">
       <header className="App-header">
-        {/* <Card>
-          <ExpenseFilter OnChangeDiv={divChangeHandler} />
-        </Card> */}
         <Card>
-          <ExpenseFilter OnChangeDiv={divChangeHandler} />
-          {expense.map(function (expenseItem, i) {
+          <ExpenseFilter
+            selectedYear={yearState}
+            OnChangeDiv={divChangeHandler}
+          />
+          {/* {expense.map((expenseItem, i) => {
             expenseItem = i;
             return (
               <ExpenseItem
@@ -59,7 +62,14 @@ const App = () => {
                 amount={expense[i].amount}
               ></ExpenseItem>
             );
-          })}
+          })} */}
+          {expense.map((expenseItem) => (
+            <ExpenseItem
+              date={expenseItem.date}
+              title={expenseItem.title}
+              amount={expenseItem.amount}
+            ></ExpenseItem>
+          ))}
         </Card>
         <AddNewExpense OnExpenseRequest={expenseRequestHandler} />
         <div>

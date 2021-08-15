@@ -25,7 +25,6 @@ const ExpenseFilter = (props) => {
       const barwidth =
         (chart.offsetWidth - (values.length - 1) * padding - data.length * 10) /
         data.length;
-      console.log(barwidth);
       let left = 0;
       for (let i = 0; i <= data.length; i++) {
         let newbar = document.createElement("div");
@@ -35,15 +34,19 @@ const ExpenseFilter = (props) => {
         newbar.style.left = left + "px";
         chart.appendChild(newbar);
         left += barwidth + padding + 10;
-        props.OnChangeDiv(newbar);
       }
     }
   };
   drawChart(values, 15);
-
+  const onChangeYearHandler = (yearChange) => {
+    props.OnChangeDiv(yearChange);
+  };
   return (
     <div className="wrapper1">
-      <YearPicker />
+      <YearPicker
+        selectedYear={props.selectedYear}
+        onChangeYear={onChangeYearHandler}
+      />
       <div
         id="chart"
         ref={(el) => {
