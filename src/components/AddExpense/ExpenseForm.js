@@ -56,6 +56,7 @@ function ExpenseForm(props) {
             value={userInput.amount}
             placeholder="Enter Price"
             onChange={amountChangeHandler}
+            required
           />
           <label>Date</label>
           <input
@@ -64,9 +65,13 @@ function ExpenseForm(props) {
             min="2021-01-01"
             max="2025-12-31"
             onChange={dateChangeHandler}
+            required
           />
           <button type="submit">
             <span>Add Expense</span>
+          </button>
+          <button type="submit" className="cancelButton">
+            <span>Cancel</span>
           </button>
         </div>
       </div>

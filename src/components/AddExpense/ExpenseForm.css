@@ -16,11 +16,18 @@
 }
 
 .inputs label,
-.inputs input,
-.inputs button {
+.inputs input {
   display: block;
   width: 100%;
   padding: 0;
+  border: none;
+  outline: none;
+  box-sizing: border-box;
+}
+.inputs button {
+  width: 48%;
+  padding: 0;
+  margin-right: 2%;
   border: none;
   outline: none;
   box-sizing: border-box;
@@ -57,7 +64,6 @@
   border-radius: 20px;
   cursor: pointer;
   font-weight: 900;
-
   box-shadow: 6px 6px 6px #cbced1, -6px -6px 6px white;
   transition: 0.5s;
 }

@@ -1,10 +1,10 @@
 import "./App.css";
-import ExpenseItem from "./components/Expense/ExpenseItem";
 import Card from "./components/UI/Card";
 import AddButton from "./components/UI/AddButton";
 import AddNewExpense from "./components/AddExpense/AddNewExpense";
 import { useState } from "react";
 import ExpenseFilter from "./components/ExpenseFilter/ExpenseFilter";
+import ExpenseList from "./components/Expense/ExpenseList";
 const dummyExpense = [
   {
     id: 1,
@@ -58,9 +58,6 @@ const dummyExpense = [
 const App = () => {
   const [yearState, setyearState] = useState("2021");
   const [expense, setexpense] = useState(dummyExpense);
-  // useEffect(() => {
-  //   console.log(yearState);
-  // }, [yearState]);
 
   const expenseRequestHandler = (expenseData) => {
     setexpense((prevExpenses) => {
@@ -68,23 +65,11 @@ const App = () => {
     });
   };
   const divChangeHandler = (yearSelected) => {
-    console.log(yearSelected);
     setyearState(yearSelected);
   };
   const filterByYear = expense.filter(
     (filterByYear) => filterByYear.date.getFullYear().toString() === yearState
   );
-  let expenseCondition = <p>No Expense Found</p>;
-  if (filterByYear.length > 0) {
-    expenseCondition = filterByYear.map((expenseItem) => (
-      <ExpenseItem
-        key={expenseItem.id}
-        date={expenseItem.date}
-        title={expenseItem.title}
-        amount={expenseItem.amount}
-      ></ExpenseItem>
-    ));
-  }
   return (
     <div className="App">
       <header className="App-header">
@@ -93,7 +78,7 @@ const App = () => {
             selectedYear={yearState}
             OnChangeDiv={divChangeHandler}
           />
-          {expenseCondition}
+          <ExpenseList filterByYear={filterByYear} />
         </Card>
         <AddNewExpense OnExpenseRequest={expenseRequestHandler} />
         <div>
