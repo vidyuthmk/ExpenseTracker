@@ -30,6 +30,13 @@
   letter-spacing: 0.64px;
   margin-left: 12px;
 }
+p {
+  margin: 10% 10% 10% 30%;
+  color: #979cb0;
+  font-weight: 600;
+  font-size: 20px;
+  letter-spacing: 0.64px;
+}
 .expense-item__amount {
   color: #35d8ac;
   font-weight: 700;

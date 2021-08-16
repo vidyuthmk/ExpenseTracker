@@ -13,7 +13,6 @@ const ExpenseFilter = (props) => {
       return;
     }
     ref.current = refState;
-    console.log(ref.current);
   }, [refState]);
 
   const drawChart = (data, padding) => {
