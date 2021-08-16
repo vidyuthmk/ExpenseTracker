@@ -1,7 +1,7 @@
 import "./App.css";
 import Card from "./components/UI/Card";
 import AddButton from "./components/UI/AddButton";
-import AddNewExpense from "./components/AddExpense/AddNewExpense";
+
 import { useState } from "react";
 import ExpenseFilter from "./components/ExpenseFilter/ExpenseFilter";
 import ExpenseList from "./components/Expense/ExpenseList";
@@ -80,9 +80,9 @@ const App = () => {
           />
           <ExpenseList filterByYear={filterByYear} />
         </Card>
-        <AddNewExpense OnExpenseRequest={expenseRequestHandler} />
+
         <div>
-          <AddButton />
+          <AddButton OnExpenseRequest={expenseRequestHandler} />
         </div>
       </header>
     </div>

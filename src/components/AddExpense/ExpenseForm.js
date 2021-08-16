@@ -4,7 +4,6 @@ import { useState } from "react";
 
 function ExpenseForm(props) {
   const [userInput, setuserInput] = useState("");
-
   const titleChangeHandler = (event) => {
     setuserInput((prevState) => {
       return { ...prevState, title: event.target.value };
@@ -39,6 +38,9 @@ function ExpenseForm(props) {
       amount: "",
     });
   };
+  const cancelAdd = () => {
+    props.onCancel(true);
+  };
   return (
     <form onSubmit={submitHandler}>
       <div className="container">
@@ -70,7 +72,7 @@ function ExpenseForm(props) {
           <button type="submit">
             <span>Add Expense</span>
           </button>
-          <button type="submit" className="cancelButton">
+          <button type="button" onClick={cancelAdd}>
             <span>Cancel</span>
           </button>
         </div>

@@ -3,17 +3,25 @@ import ExpenseForm from "./ExpenseForm";
 import "./AddNewExpense.css";
 
 const AddNewExpense = (props) => {
+  console.log(props);
   const saveExpenseHandler = (enteredEXpense) => {
     const expenseDate = {
       ...enteredEXpense,
       id: Math.random().toString(36).substr(2, 9).toString(),
     };
     props.OnExpenseRequest(expenseDate);
+    props.addedDataClose();
+  };
+  const OncancelCall = () => {
+    props.onCancel(true);
   };
 
   return (
     <div className="form__Controller">
-      <ExpenseForm onSaveExpenseData={saveExpenseHandler} />
+      <ExpenseForm
+        onSaveExpenseData={saveExpenseHandler}
+        onCancel={OncancelCall}
+      />
     </div>
   );
 };
