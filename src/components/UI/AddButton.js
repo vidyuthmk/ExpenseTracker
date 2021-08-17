@@ -6,13 +6,11 @@ const AddButton = (props) => {
   const [buttonState, setbuttonState] = useState(false);
   const addButtonHandler = () => {
     setbuttonState(true);
-    console.log("reaching");
   };
   const addedDataCloseHandler = () => {
     setbuttonState(false);
   };
   const onCancelHandler = () => {
-    console.log("cancel reached");
     setbuttonState(false);
   };
   if (buttonState === true) {
