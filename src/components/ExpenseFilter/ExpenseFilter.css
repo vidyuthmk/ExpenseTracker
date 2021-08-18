@@ -45,3 +45,14 @@
 .wrapper1 > p {
   margin: 0;
 }
+.month1 {
+  display: flex;
+  padding: 0.5rem;
+}
+.mondiv {
+  position: relative;
+  padding-right: 3%;
+  font-weight: 800;
+  font-size: 1.12em;
+  color: rgb(143, 140, 140);
+}

@@ -77,6 +77,7 @@ const App = () => {
           <ExpenseFilter
             selectedYear={yearState}
             OnChangeDiv={divChangeHandler}
+            newFilter={filterByYear}
           />
           <ExpenseList filterByYear={filterByYear} />
         </Card>
