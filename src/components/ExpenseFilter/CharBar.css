@@ -1,0 +1,29 @@
+@-webkit-keyframes bargrowth {
+  0% {
+    max-height: 0%;
+  }
+  100% {
+    max-height: 100%;
+  }
+}
+@keyframes bargrowth {
+  0% {
+    max-height: 0%;
+  }
+  100% {
+    max-height: 100%;
+  }
+}
+.bar {
+  -webkit-animation: bargrowth 1000ms ease;
+  animation: bargrowth 1000ms ease;
+  bottom: 0;
+  display: inline-block;
+  background: #35d8ac;
+  box-shadow: 1px -1px #0dd39e, 2px -2px #0dd39e, 3px -3px #0dd39e,
+    4px -4px #0dd39e, 5px -5px #0dd39e;
+}
+#chart div {
+  margin-right: 4%;
+  padding: 2px;
+}

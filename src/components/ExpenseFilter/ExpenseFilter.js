@@ -1,7 +1,8 @@
 import React from "react";
-import { useRef, useEffect } from "react";
+// import { useRef, useEffect, useState } from "react";
 import "./ExpenseFilter.css";
 import YearPicker from "./YearPicker";
+import CharBar from "./CharBar";
 
 const ExpenseFilter = (props) => {
   // const [datapoints, setdatapoints] = useState();
@@ -25,46 +26,52 @@ const ExpenseFilter = (props) => {
     console.log();
   }
   const dataPointValues = chartDataPoints.map((dataPoint) => dataPoint.value);
-  const month = chartDataPoints.map((dataPoint) => dataPoint.label);
+  const totalMaximum = Math.max(...dataPointValues);
+  console.log(totalMaximum);
+  // const month = chartDataPoints.map((dataPoint) => dataPoint.label);
+  console.log(dataPointValues);
 
   // const values = [100, 100, 340, 320, 500, 50, 45, 385, 95, 120, 90, 20];
-  const ref = useRef();
-  const monref = useRef();
+  // const ref = useRef();
+  // const monref = useRef();
 
-  useEffect(() => {
-    if (ref.current === undefined && monref.current === undefined) {
-      return;
-    } else {
-      const drawChart = (data, padding, month) => {
-        const max = Math.max.apply(Math, data);
-        const chart = ref.current;
-        console.log(chart);
-        const mon = monref.current;
-        const barwidth =
-          (chart.offsetWidth -
-            (dataPointValues.length - 1) * padding -
-            data.length * 10) /
-          data.length;
-        console.log(barwidth);
-        let left = 0;
-        for (let i = 0; i < data.length; i++) {
-          let newbar = document.createElement("div");
-          newbar.setAttribute("class", "bar");
-          newbar.style.width = barwidth + "px";
-          newbar.style.height = (data[i] / max) * 100 + "%";
-          newbar.style.left = left + "px";
-          chart.appendChild(newbar);
-          left += barwidth + padding + 10;
-          let newDiv = document.createElement("div");
-          let divElement = document.createTextNode(month[i]);
-          newDiv.setAttribute("class", "mondiv");
-          newDiv.appendChild(divElement);
-          mon.appendChild(newDiv);
-        }
-      };
-      drawChart(dataPointValues, 15, month);
-    }
-  }, [ref, dataPointValues]);
+  // useEffect(() => {
+  //   if (ref.current === undefined && monref.current === undefined) {
+  //     return;
+  //   } else {
+  //     const drawChart = (data, padding, month) => {
+  //       const max = Math.max.apply(Math, data);
+  //       const chart = ref.current;
+  //       console.log(chart);
+  //       const mon = monref.current;
+  //       const barwidth =
+  //         (chart.offsetWidth -
+  //           (dataPointValues.length - 1) * padding -
+  //           data.length * 10) /
+  //         data.length;
+  //       console.log(barwidth);
+  //       let left = 0;
+  //       for (let i = 0; i < data.length; i++) {
+  //         let newbar = document.createElement("div");
+  //         newbar.setAttribute("class", "bar");
+  //         newbar.style.width = barwidth + "px";
+  //         newbar.style.height = (data[i] / max) * 100 + "%";
+  //         newbar.style.left = left + "px";
+  //         chart.appendChild(newbar);
+  //         left += barwidth + padding + 10;
+  //         let newDiv = document.createElement("div");
+  //         let divElement = document.createTextNode(month[i]);
+  //         newDiv.setAttribute("class", "mondiv");
+  //         newDiv.appendChild(divElement);
+  //         mon.appendChild(newDiv);
+  //       }
+  //     };
+  //     console.log(drawChart);
+  //     drawChart(dataPointValues, 15, month);
+  //   }
+
+  //   return () => {};
+  // }, []);
 
   const onChangeYearHandler = (yearChange) => {
     props.OnChangeDiv(yearChange);
@@ -75,7 +82,34 @@ const ExpenseFilter = (props) => {
         selectedYear={props.selectedYear}
         onChangeYear={onChangeYearHandler}
       />
-      <div
+      <div id="chart">
+        {chartDataPoints.map((dataPoint) => (
+          <CharBar
+            key={dataPoint.label}
+            value={dataPoint.value}
+            maxValue={totalMaximum}
+            label={dataPoint.label}
+          />
+        ))}
+      </div>
+      <div className="Space">
+        <div className="month1">
+          <div className="month1">JAN</div>
+          <div className="month1">FEB</div>
+          <div className="month1">MAR</div>
+          <div className="month1">APR</div>
+          <div className="month1">MAY</div>
+          <div className="month1">JUN</div>
+          <div className="month1">JUL</div>
+          <div className="month1">AUG</div>
+          <div className="month1">SEP</div>
+          <div className="month1">OCT</div>
+          <div className="month1">NOV</div>
+          <div className="month1">DEC</div>
+        </div>
+      </div>
+
+      {/* <div
         id="chart"
         ref={(el) => {
           ref.current = el;
@@ -86,7 +120,7 @@ const ExpenseFilter = (props) => {
         ref={(el) => {
           monref.current = el;
         }}
-      ></div>
+      ></div> */}
     </div>
   );
 };
